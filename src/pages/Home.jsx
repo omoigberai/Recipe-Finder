@@ -1,6 +1,8 @@
 import { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import RecipeCard from "../components/RecipeCard";
+import Loading from "../components/Loading";
+import ErrorMessage from "../components/ErrorMessage";
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -41,8 +43,8 @@ function Home() {
 
       <SearchBar onSearch={handleSearch} />
 
-      {loading && <p className="mt-4">Loading...</p>}
-      {error && <p className="mt-4 text-red-500">{error}</p>}
+      {loading && <Loading />}
+{error && <ErrorMessage message={error} />}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
         {recipes.map((recipe) => (
